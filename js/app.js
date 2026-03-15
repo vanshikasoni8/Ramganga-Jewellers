@@ -94,6 +94,9 @@ function initScrollProgress() {
 // PARALLAX EFFECT
 // ============================================================
 function initParallax() {
+  // Skip parallax on mobile for smooth scrolling
+  if (window.innerWidth < 768) return;
+
   const parallaxElements = document.querySelectorAll("[data-parallax]");
   const parallaxBgs = document.querySelectorAll("[data-parallax-bg]");
 
