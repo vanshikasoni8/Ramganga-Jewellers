@@ -347,13 +347,44 @@
             </div>
           </div>
         </div>
-        <form class="contact-form glass-card reveal-right" onsubmit="event.preventDefault(); this.querySelector('.btn-submit').innerHTML='<i class=\'fas fa-check\'></i> Message Sent!'; setTimeout(()=>this.querySelector('.btn-submit').innerHTML='<i class=\'fas fa-paper-plane\'></i> Send Message',3000);">
-          <input type="text" placeholder="Your Name" required>
-          <input type="email" placeholder="Your Email" required>
-          <input type="tel" placeholder="Your Phone Number">
-          <textarea placeholder="Tell us what you're looking for..." rows="5" required></textarea>
+        <form class="contact-form glass-card reveal-right" id="enquiry-form"
+              action="https://formsubmit.co/ramgangajwellers@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Enquiry from Ramganga Jewellers Website">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_next" id="form-next" value="">
+          <input type="text" name="name" placeholder="Your Name" required>
+          <input type="email" name="email" placeholder="Your Email" required>
+          <input type="tel" name="phone" placeholder="Your Phone Number">
+          <textarea name="message" placeholder="Tell us what you're looking for..." rows="5" required></textarea>
           <button type="submit" class="btn-submit magnetic"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
+      </div>
+
+      <!-- MAP -->
+      <div class="contact-map glass-card reveal-up">
+        <div class="map-frame">
+          <iframe
+            src="https://maps.google.com/maps?q=27.892528,78.084908&z=17&output=embed"
+            title="Ramganga Jewellers location on map"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+        <div class="map-bar">
+          <div class="map-bar-info">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Ramganga Jewellers</strong>
+              <span>Ramghat Road, Near HDFC Bank, Aligarh, UP - 202001</span>
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/place/27%C2%B053'33.1%22N+78%C2%B005'05.7%22E/@27.8923764,78.0849024,18.07z/data=!4m4!3m3!8m2!3d27.892528!4d78.084908"
+             target="_blank" rel="noopener" class="map-directions magnetic">
+            <i class="fas fa-diamond-turn-right"></i> Get Directions
+          </a>
+        </div>
       </div>
     </div>
   </section>

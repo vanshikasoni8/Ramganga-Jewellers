@@ -4,7 +4,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   initPreloader();
-  initCustomCursor();
   initScrollProgress();
   initParallax();
   initMagneticButtons();
@@ -15,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupNav();
   initScrollReveal();
   setupModal();
+  setupContactForm();
   setupBackToTop();
   typewriterEffect();
   initTiltCards();
@@ -348,6 +348,42 @@ function openModal(id) {
 function closeModal() {
   document.getElementById("product-modal").classList.remove("open");
   document.body.style.overflow = "";
+}
+
+// ============================================================
+// CONTACT FORM (FormSubmit classic POST -> ramgangajwellers@gmail.com)
+// FormSubmit auto-emails each enquiry and redirects back via _next, where we
+// show the confirmation. First submission triggers a one-time activation email.
+// ============================================================
+function setupContactForm() {
+  const form = document.getElementById("enquiry-form");
+  const status = document.getElementById("form-status");
+  const next = document.getElementById("form-next");
+
+  // Returned from FormSubmit after a successful send -> show confirmation
+  if (status && /[?&]sent=1/.test(location.search)) {
+    status.textContent = "✔ Your enquiry is registered. We will contact you soon!";
+    status.classList.remove("error");
+    status.classList.add("show");
+    history.replaceState(null, "", location.pathname + "#contact");
+    const c = document.getElementById("contact");
+    if (c) c.scrollIntoView();
+  }
+
+  if (!form || !next) return;
+
+  const isLocal = /^(localhost|127\.|0\.0\.0\.0|\[?::1)/.test(location.hostname);
+
+  form.addEventListener("submit", () => {
+    if (isLocal) {
+      // On localhost the redirect target is not publicly reachable; let
+      // FormSubmit show its own thank-you page so activation still fires.
+      next.remove();
+    } else {
+      // Live site: redirect back here with a success flag for our confirmation
+      next.value = location.origin + location.pathname + "?sent=1#contact";
+    }
+  });
 }
 
 // ============================================================
