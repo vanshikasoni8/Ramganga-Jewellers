@@ -333,7 +333,7 @@ function openModal(id) {
           </div>
         </div>
         <div class="modal-actions">
-          <a href="https://wa.me/919897000000?text=Hi! I'm interested in ${encodeURIComponent(product.name)}" target="_blank" class="btn-whatsapp">
+          <a href="https://wa.me/919897191904?text=Hi! I'm interested in ${encodeURIComponent(product.name)}" target="_blank" class="btn-whatsapp">
             <i class="fab fa-whatsapp"></i> Enquire on WhatsApp
           </a>
           <button class="btn-outline" onclick="closeModal()">Continue Browsing</button>
